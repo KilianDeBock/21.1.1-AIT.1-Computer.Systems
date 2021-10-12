@@ -1,0 +1,79 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gluten&display=swap');
+
+    * {
+        width: 100vm;
+        max-width: 50rem;
+        text-align: center;
+        margin: 3rem auto auto;
+    }
+
+    .message {
+        font-family: 'Gluten', cursive;
+        font-size: 3rem;
+    }
+
+    .text, .browser {
+        font-family: 'Gluten', cursive;
+    }
+
+    h1 {font-size: 6rem;}
+    .browser {font-size: 4rem;}
+
+    .transition {
+        width: 100px;
+        height: 100px;
+        background: rgba(255,0,0,1);
+        transition-property: transform background;
+        transition-duration: 2s;
+        transition-delay: 2s;
+        border-radius: 1rem;
+    }
+
+    .transition:hover {
+        transform: rotate(90deg);
+        background: rgba(255,0,0,0);
+    }
+
+</style>
+<main>
+    <h1 class="text">Kilian De Bock</h1>
+    <div class="browser">Loading...</div>
+    <div class="transition"></div>
+    <div class="message"></div>
+</main>
+<script>
+  const message = document.querySelector('.message');
+  const el = document.querySelector('.transition');
+  el.addEventListener('transitionrun', function() {
+    message.textContent = 'Transition starting...';
+  });
+
+  el.addEventListener('transitionstart', function() {
+    message.textContent = 'Transition going on!';
+  });
+
+  el.addEventListener('transitioncancel', function() {
+    message.textContent = 'Transition canceled.';
+  });
+
+  el.addEventListener('transitionend', function() {
+    message.textContent = 'Transition ended.';
+  });
+
+  const browser = document.querySelector('.browser');
+  const browserStart = "Browser: "
+  if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) !== -1 ) {
+    browser.textContent = browserStart + 'Opera';
+  } else if(navigator.userAgent.indexOf("Chrome") !== -1 ) {
+    browser.textContent = browserStart + 'Chrome';
+  } else if(navigator.userAgent.indexOf("Safari") !== -1) {
+    browser.textContent = browserStart + 'Safari';
+  } else if(navigator.userAgent.indexOf("Firefox") !== -1 ){
+    browser.textContent = browserStart + 'Firefox';
+  } else if((navigator.userAgent.indexOf("MSIE") !== -1 ) || (!!document.documentMode === true )) {
+    browser.textContent = browserStart + 'IE';
+  } else {
+    browser.textContent = 'Unknown';
+  }
+</script>

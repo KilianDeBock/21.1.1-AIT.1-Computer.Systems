@@ -1,0 +1,10 @@
+FROM node:16.10
+
+WORKDIR /usr/node
+WORKDIR /app
+
+RUN pwd
+
+CMD [ "-v" ]
+
+ENTRYPOINT [ "node" ]

@@ -1,0 +1,5 @@
+FROM node:16.10
+
+CMD [ "-v" ]
+
+ENTRYPOINT [ "node" ]
